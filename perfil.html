@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./src/style/main.css" />
+  <link rel="stylesheet" href="./src/style/perfil.css" />
+  <title>Perfil do Utilizador</title>
+</head>
+<body>
+
+ <!-- Header / Navbar -->
+    <header class="header">
+      <div class="container nav">
+        <div class="logo"><a href="index.html"><img src="./src/img/doe1.png" alt="logo" /></a></div>
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Início</a>
+
+          <!-- Ação principal (muda conforme tipo de conta) -->
+          <a href="doacoes.html" id="donationActionBtn" class="btn btn-primary">
+            Fazer uma Doação
+          </a>
+
+          <a href="chats.html" id="messagesMenuLink">Chat💬</a>
+
+          <a href="perfil.html" id="profileLink">Perfil</a>
+
+          <a href="login.html" id="loginLink">Entrar</a>
+
+          <!-- Logout -->
+          <button
+            id="logoutBtn"
+            class="btn btn-outline btn-small"
+            style="display: none"
+          >
+            Terminar sessão
+          </button>
+        </nav>
+      </div>
+    </header>
+
+  <main class="container profile-page fade-in">
+
+    <!-- Cabeçalho do perfil -->
+    <section class="profile-header">
+      <div class="profile-avatar">👤</div>
+      <div class="profile-info">
+        <h2 id="profileName">Nome do Utilizador</h2>
+        <p id="profileType">Tipo de conta</p>
+        <p id="profileEmail">email@exemplo.com</p>
+        <p id="profileLocation">Localização</p>
+        <p id="profileNif" style="display:none;"></p>
+        <p id="profileArea" style="display:none;"></p>
+      </div>
+    </section>
+
+    <!-- Minhas doações -->
+    <section id="individualSection" class="profile-donations">
+      <h3>Minhas Doações</h3>
+
+      <p id="noDonations" class="empty-message" style="display:none;">
+        Ainda não publicaste nenhuma doação.
+      </p>
+
+      <div id="myItemsGrid" class="items-grid"></div>
+    </section>
+
+    <section id="ongSection" class="profile-donations">
+  <h3>Meus Pedidos de Doação</h3>
+
+  <p id="noRequests" class="empty-message" style="display:none;">
+    Ainda não publicaste nenhum pedido.
+  </p>
+
+  <div id="myRequestsGrid" class="items-grid"></div>
+</section>
+
+  </main>
+
+<!-- Footer -->
+    <footer class="footer fade-in">
+      <div class="container footer-grid">
+        <div>
+          <h4>Doe.com</h4>
+          <p>
+            Conectando comunidades em Angola através de doações e partilhas.
+            Partilhe o que não usa, ajude quem precisa.
+          </p>
+        </div>
+
+        <div>
+          <h4>Links Rápidos</h4>
+          <p><a href="#">Políticas e privacidade</a></p>
+          <p><a href="#">Sobre Nós</a></p>
+          <p><a href="#">Centro de Ajuda</a></p>
+        </div>
+
+        <div>
+          <h4>Contacto</h4>
+          <p>📞 +244 xxx xxx xxx</p>
+          <p>✉ hello@doe.ao</p>
+          <p>📍 Luanda, Angola</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Doe.com. Todos os direitos reservados.
+      </div>
+    </footer>
+
+  <script src="./src/script/auth.js"></script>
+  <script src="./src/script/script.js"></script>
+  <script src="./src/script/perfil.js"></script>
+
+</body>
+</html>

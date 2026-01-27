@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fazer uma Doação | Kambia</title>
+  <link rel="stylesheet" href="./src/style/main.css" />
+  <link rel="stylesheet" href="./src/style/doacoes.css" />
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+    <header class="header">
+      <div class="container nav">
+        <div class="logo"><a href="index.html"><img src="./src/img/doe1.png" alt="logo" /></a></div>
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Início</a>
+
+          <!-- Ação principal (muda conforme tipo de conta) -->
+          <a href="doacoes.html" id="donationActionBtn" class="btn btn-primary">
+            Fazer uma Doação
+          </a>
+
+          <a href="chats.html" id="messagesMenuLink">Chat💬</a>
+
+          <a href="perfil.html" id="profileLink">Perfil</a>
+
+          <a href="login.html" id="loginLink">Entrar</a>
+
+          <!-- Logout -->
+          <button
+            id="logoutBtn"
+            class="btn btn-outline btn-small"
+            style="display: none"
+          >
+            Terminar sessão
+          </button>
+        </nav>
+      </div>
+    </header>
+
+<!-- Página Pedidos de Doação -->
+<section class="donation-page">
+  <div class="container">
+
+    <!-- Cabeçalho (dinâmico via JS) -->
+     <section id="requestFormSection">
+    <div class="section-header">
+      <h2>Criar Pedido de Doação</h2>
+      <p>
+        Descreva o que a sua organização precisa neste momento.
+      </p>
+    </div>
+
+    <!-- ONG → FORMULÁRIO -->
+
+    <form
+      id="requestForm"
+      class="donation-grid fade-in"
+    >
+      <div class="donation-card">
+        <h3>Detalhes do Pedido</h3>
+
+        <label>Nome do Item Necessário *</label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Ex: Alimentos não perecíveis"
+          required
+        />
+
+        <label>Categoria *</label>
+        <select name="category" required>
+          <option value="">Selecionar categoria</option>
+          <option value="Alimentos">Alimentos</option>
+          <option value="Roupas">Roupas</option>
+          <option value="Medicamentos">Medicamentos</option>
+          <option value="Material Escolar">Material Escolar</option>
+        </select>
+
+        <label>Descrição do Pedido *</label>
+        <textarea
+          name="description"
+          maxlength="500"
+          placeholder="Explique a necessidade e quem será beneficiado"
+          required
+        ></textarea>
+
+        <label>Localização *</label>
+        <input
+          type="text"
+          name="location"
+          placeholder="Cidade / Bairro"
+          required
+        />
+
+        <label>Urgência</label>
+        <div class="radio-grid">
+          <label>
+            <input type="radio" name="priority" value="Alta" />
+            Alta
+          </label>
+          <label>
+            <input type="radio" name="priority" value="Média" />
+            Média
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="priority"
+              value="Normal"
+              checked
+            />
+            Normal
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary btn-full"
+        >
+          Publicar Pedido
+        </button>
+      </div>
+    </form>
+    </section>
+
+    <!-- INDIVIDUAL → LISTA -->
+    <section
+      id="requestsListSection"
+      class="fade-in"
+      style="display:none;"
+    >
+      <h3>Pedidos de Doação das ONGs</h3>
+
+      <p
+        id="emptyRequests"
+        class="empty-message"
+        style="display:none;"
+      >
+        Ainda não existem pedidos publicados.
+      </p>
+
+      <div
+        id="requestsGrid"
+        class="items-grid"
+      ></div>
+    </section>
+
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="helpModal" class="modal">
+  <div class="modal-content">
+    <button id="closeModal">×</button>
+
+    <h3 id="modalTitle"></h3>
+    <p id="modalDescription"></p>
+
+    <p><strong>ONG:</strong> <span id="modalOng"></span></p>
+    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+    <p><strong>NIF:</strong> <span id="modalNif"></span></p>
+
+    <button id="contactBtn" class="btn btn-primary">
+      Entrar em contacto
+    </button>
+  </div>
+</div>
+
+
+
+  <!-- Footer -->
+  <footer class="footer fade-in">
+    <div class="container footer-grid">
+      <div>
+        <h4>Doe.com</h4>
+        <p>
+          Conectando comunidades em Angola através de doações e partilhas.
+          Partilhe o que não usa, ajude quem precisa.
+        </p>
+      </div>
+
+      <div>
+          <h4>Links Rápidos</h4>
+          <p><a href="#">Políticas e privacidade</a></p>
+          <p><a href="#">Sobre Nós</a></p>
+          <p><a href="#">Centro de Ajuda</a></p>
+        </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <p>📞 +244 xxx xxx xxx</p>
+        <p>✉ hello@doe.ao</p>
+        <p>📍 Luanda, Angola</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Doe.com. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="./src/script/auth.js"></script>  
+  <script src="./src/script/script.js"></script>
+  <script src="./src/script/doacoes.js"></script>
+</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+/* =========================
+   Página de Perfil
+   ========================= */
+
+.profile-page {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+/* Cabeçalho do perfil */
+.profile-header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 3rem;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.profile-info h2 {
+  margin-bottom: 0.4rem;
+}
+
+.profile-info p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* Minhas doações */
+.profile-donations h3 {
+  margin-bottom: 1.5rem;
+}
+
+#myItemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Card reutilizado com ajustes */
+#myItemsGrid .item-card {
+  position: relative;
+}
+
+/* Botão remover */
+.item-remove {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.item-remove:hover {
+  opacity: 0.9;
+}
+
+/* Mensagem vazia */
+.empty-message {
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem 0;
+}
+
+/* =========================
+   Cards de Itens (padrão)
+   ========================= */
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* Card */
+.item-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagem */
+.item-image {
+  width: 100%;
+  height: 180px;              /* altura fixa */
+  overflow: hidden;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* corta sem distorcer */
+  display: block;
+}
+
+/* Conteúdo */
+.item-content {
+  padding: 1rem 1.2rem;
+  flex: 1;
+}
+
+.item-content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.item-category,
+.item-location {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 0.3rem;
+}
+
+
+/* Responsivo */
+@media (max-width: 700px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    margin-bottom: 1rem;
+  }
+}
