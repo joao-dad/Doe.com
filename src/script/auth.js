@@ -1,3 +1,27 @@
+/*Menu Mobile */
+
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+const menu = $('menu');
+if (menu) {
+  menu.style.display = 'none';
+}
+
+
+ function $(id) {
+  return document.getElementById(id);
+}
+
+
 // =============================
 // AUTENTICAÇÃO (Signup + Login)
 // =============================
