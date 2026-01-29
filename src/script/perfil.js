@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
 
   if (!loggedUser) {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
     return;
   }
 

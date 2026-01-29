@@ -16,7 +16,7 @@ const chatSubtitle = document.getElementById('chatSubtitle');
 // AUTENTICAÇÃO
 if (!loggedUser) {
   alert('Precisa estar logado.');
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
 }
 
 // SEM chatId → VOLTA PARA LISTA

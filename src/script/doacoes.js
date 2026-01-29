@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const listSection = document.getElementById('requestsListSection');
 
   if (!user) {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
     return;
   }
 

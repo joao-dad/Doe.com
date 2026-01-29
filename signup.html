@@ -18,9 +18,9 @@
           <!-- Tipo de conta -->
           <div class="form-group">
             <label>Tipo de conta</label>
-            <div style="display: flex; gap: 1rem">
-              <button type="button" class="btn btn-outline">Individual</button>
-              <button type="button" class="btn btn-outline">ONG</button>
+            <div class="account-type" style="display: flex; gap: 1rem">
+              <button type="button" class="btn btn-outline active" data-type="Individual">Individual</button>
+              <button type="button" class="btn btn-outline" data-type="ONG">ONG</button>
             </div>
           </div>
 
@@ -53,17 +53,17 @@
             <div class="ngo-fields" style="display: none">
               <div class="form-group">
                 <label for="nameONG">Nome da Organização</label>
-                <input type="text" id="nameONG" name="nameONG" placeholder="Nome da ONG" required/>
+                <input type="text" id="nameONG" name="nameONG" placeholder="Nome da ONG"/>
               </div>
 
               <div class="form-group">
                 <label for="nif">NIF da Organização</label>
-                <input type="text" id="nif" name="nif" placeholder="NIF" required/>
+                <input type="text" id="nif" name="nif" placeholder="NIF"/>
               </div>
 
               <div class="form-group">
                 <label for="area">Área de atuação</label>
-                <input type="text" id="area" name="area" placeholder="Ex. Educação" required/>
+                <input type="text" id="area" name="area" placeholder="Ex. Educação"/>
               </div>
             </div>
 
@@ -79,7 +79,7 @@
 
         <!-- Coluna direita: imagem -->
         <div class="auth-side">
-          <img src="./src/img/doe.png" alt="Ilustração de comunidade" />
+          <img src="./src/img/doe1.png" alt="Ilustração de comunidade" />
           <h2>Junte-se à nossa comunidade</h2>
           <p>
             Faça parte de uma rede de pessoas e organizações em Angola que estão
@@ -121,7 +121,6 @@
     </footer>
 
     <script src="./src/script/auth.js"></script>
-    <script src="./src/script/sign.js"></script>
 
   </body>
 </html>

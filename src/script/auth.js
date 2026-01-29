@@ -1,6 +1,6 @@
 /*Menu Mobile */
 
-const menuToggle = document.getElementById('menuToggle');
+/*const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
 menuToggle.addEventListener('click', () => {
@@ -19,7 +19,7 @@ if (menu) {
 
  function $(id) {
   return document.getElementById(id);
-}
+}*/
 
 
 // =============================
@@ -48,14 +48,55 @@ function setLoggedUser(user) {
 // =============================
 // SIGNUP (Criar Conta)
 // =============================
+let selectedAccountType = 'Individual';
+
 const signupForm = document.getElementById('signupForm');
+const typeButtons = document.querySelectorAll('.account-type .btn-outline');
 
+const ongFields = document.getElementById('ongFields');
+
+function toggleAccountType(type) {
+  if (!ongFields) return;
+
+  const nameONG = signupForm.nameONG;
+  const nif = signupForm.nif;
+  const area = signupForm.area;
+
+  if (type === 'ONG') {
+    ongFields.style.display = 'block';
+    nameONG.required = true;
+    nif.required = true;
+    area.required = true;
+  } else {
+    ongFields.style.display = 'none';
+    nameONG.required = false;
+    nif.required = false;
+    area.required = false;
+
+    nameONG.value = '';
+    nif.value = '';
+    area.value = '';
+  }
+}
+
+// BOTÕES TIPO DE CONTA
+typeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    typeButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    selectedAccountType = btn.dataset.type;
+    toggleAccountType(selectedAccountType);
+  });
+});
+
+// ESTADO INICIAL
+toggleAccountType(selectedAccountType);
+
+// SUBMIT
 if (signupForm) {
-  signupForm.addEventListener('submit', event => {
-    event.preventDefault();
-
-    const accountTypeBtn = document.querySelector('.btn-outline.active');
-    const type = accountTypeBtn ? accountTypeBtn.textContent.trim() : 'Individual';
+  signupForm.addEventListener('submit', e => {
+    e.preventDefault();
 
     const email = signupForm.email.value.trim();
     const password = signupForm.password.value;
@@ -74,8 +115,7 @@ if (signupForm) {
 
     const users = getUsers();
 
-    const emailExists = users.some(user => user.email === email);
-    if (emailExists) {
+    if (users.some(u => u.email === email)) {
       alert('Este email já está registado.');
       return;
     }
@@ -85,10 +125,10 @@ if (signupForm) {
       email,
       password,
       location,
-      type
+      type: selectedAccountType
     };
 
-    if (type === 'ONG') {
+    if (selectedAccountType === 'ONG') {
       newUser.organizationName = signupForm.nameONG.value.trim();
       newUser.nif = signupForm.nif.value.trim();
       newUser.area = signupForm.area.value.trim();
@@ -100,9 +140,10 @@ if (signupForm) {
     saveUsers(users);
 
     alert('Conta criada com sucesso! Agora faça login.');
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   });
 }
+
 
 // =============================
 // LOGIN
@@ -128,18 +169,8 @@ if (loginForm) {
     setLoggedUser(user);
 
     alert('Login efetuado com sucesso!');
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
   });
 }
 
-  // Logout
-  logoutBtn.addEventListener('click', () => {
-    const confirmLogout = confirm(
-      'Tem a certeza que deseja terminar a sessão?'
-    );
-
-    if (!confirmLogout) return;
-
-    localStorage.removeItem('loggedUser');
-    window.location.href = 'login.html';
-  });
+  

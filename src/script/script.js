@@ -21,100 +21,81 @@ if (menu) {
   return document.getElementById(id);
 }
 
-// ===============================
-// DOM READY
-// ===============================
-document.addEventListener('DOMContentLoaded', () => {
-  const user = JSON.parse(localStorage.getItem('loggedUser'));
+// helper seguro
+function $(id) {
+  return document.getElementById(id);
+}
 
-  // -------------------------------
-  // MENU / HEADER
-  // -------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const user = getLoggedUser?.();
+  if (!user) return;
+
+  // MENU
   const loginLink = $('loginLink');
   const logoutBtn = $('logoutBtn');
   const donationBtn = $('donationActionBtn');
   const itemsLink = $('itemsLink');
-  const messagesLink = $('messagesMenuLink');
 
-  // NÃO LOGADO
-  if (!user) {
-    if (logoutBtn) logoutBtn.style.display = 'none';
-    return;
-  }
-
-  // LOGADO
   if (loginLink) loginLink.style.display = 'none';
   if (logoutBtn) logoutBtn.style.display = 'inline-block';
 
-  // ONG
   if (user.type === 'ONG') {
     if (donationBtn) donationBtn.textContent = 'Pedido de Doação';
     if (itemsLink) itemsLink.style.display = 'none';
-  }
-
-  // INDIVIDUAL
-  if (user.type === 'Individual') {
+  } else {
     if (donationBtn) donationBtn.textContent = 'Fazer uma Doação';
   }
 
-  // -------------------------------
-  // HOME: VISÃO INDIVIDUAL / ONG
-  // -------------------------------
+  // HOME
   const individualContent = $('individualContent');
   const ongContent = $('ongContent');
 
   if (individualContent && ongContent) {
-    if (user.type === 'ONG') {
-      individualContent.style.display = 'none';
-      ongContent.style.display = 'block';
-    } else {
-      individualContent.style.display = 'block';
-      ongContent.style.display = 'none';
-    }
+    individualContent.style.display =
+      user.type === 'ONG' ? 'none' : 'block';
+    ongContent.style.display =
+      user.type === 'ONG' ? 'block' : 'none';
   }
 
-  // -------------------------------
-  // CONTADOR DE MENSAGENS
-  // -------------------------------
   updateMessagesMenu(user);
-
-  // -------------------------------
-  // LOGOUT
-  // -------------------------------
-
 });
 
-// ===============================
-// FUNÇÃO: CONTADOR DE MENSAGENS
-// ===============================
-function updateMessagesMenu(loggedUser) {
+// contador mensagens
+function updateMessagesMenu(user) {
   const link = $('messagesMenuLink');
-  if (!link || !loggedUser) return;
+  if (!link) return;
 
   const chats = JSON.parse(localStorage.getItem('chats')) || [];
-  let unreadCount = 0;
+  let unread = 0;
 
   chats.forEach(chat => {
-    const isParticipant =
-      chat.userEmail === loggedUser.email ||
-      chat.ongEmail === loggedUser.email;
-
-    if (!isParticipant) return;
+    if (
+      chat.userEmail !== user.email &&
+      chat.ongEmail !== user.email
+    ) return;
 
     chat.messages.forEach(msg => {
       if (
-        msg.sender !== loggedUser.email &&
-        (!msg.readBy || !msg.readBy.includes(loggedUser.email))
+        msg.sender !== user.email &&
+        (!msg.readBy || !msg.readBy.includes(user.email))
       ) {
-        unreadCount++;
+        unread++;
       }
     });
   });
 
   link.textContent =
-    unreadCount > 0 ? `Mensagens (${unreadCount})` : 'Mensagens';
+    unread > 0 ? `Mensagens (${unread})` : 'Mensagens';
 }
 
+// Logout
+  logoutBtn.addEventListener('click', () => {
+    const confirmLogout = confirm(
+      'Tem a certeza que deseja terminar a sessão?'
+    );
 
+    if (!confirmLogout) return;
 
-
+    localStorage.removeItem('loggedUser');
+    window.location.href = 'index.html';
+  });
