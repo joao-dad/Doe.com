@@ -99,3 +99,16 @@ function updateMessagesMenu(user) {
     localStorage.removeItem('loggedUser');
     window.location.href = 'index.html';
   });
+
+
+  function getDonationRequests() {
+  const data = localStorage.getItem('donationRequests');
+  return data ? JSON.parse(data) : [];
+}
+
+function saveDonationRequests(requests) {
+  localStorage.setItem(
+    'donationRequests',
+    JSON.stringify(requests)
+  );
+}

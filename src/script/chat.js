@@ -92,9 +92,11 @@ function renderMessages() {
     );
 
     div.innerHTML = `
+      <small style="font-weight: 600;">${msg.sender}</small>
       <p>${msg.text}</p>
-      <small>${new Date(msg.date).toLocaleString()}</small>
+      <small style="opacity:0.5">${new Date(msg.date).toLocaleString()}</small>
     `;
+
 
     messagesContainer.appendChild(div);
   });
@@ -115,10 +117,14 @@ messageForm.addEventListener('submit', e => {
 
   chat.messages.push({
   sender: loggedUser.email,
+  senderName:
+    loggedUser.type === 'ONG'
+      ? loggedUser.organizationName
+      : loggedUser.name,
   text,
-  date: new Date().toISOString(),
-  readBy: [loggedUser.email]
+  date: new Date().toISOString()
 });
+
 
 localStorage.setItem('chats', JSON.stringify(chats));
 

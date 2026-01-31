@@ -1,0 +1,183 @@
+/* ===============================
+   ADMIN – LAYOUT GERAL
+================================ */
+
+.admin-container {
+  max-width: 1200px;
+  margin: 10px auto 60px;
+  padding: 0 1rem;
+}
+
+.admin-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #222;
+  text-align: center;
+}
+
+/* ===============================
+   CARDS (Resumo)
+================================ */
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.admin-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.admin-card h3 {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.admin-card span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff7a00;
+}
+
+/* ===============================
+   TABELAS
+================================ */
+
+.admin-section {
+  margin-bottom: 3rem;
+}
+
+.admin-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.admin-table-wrapper {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table thead {
+  background: #f7f7f7;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  font-weight: 600;
+  color: #444;
+}
+
+.admin-table td {
+  color: #555;
+  border-top: 1px solid #eee;
+}
+
+/* ===============================
+   BOTÕES
+================================ */
+
+.admin-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-btn.delete {
+  background: #ff4d4f;
+  color: #fff;
+}
+
+.admin-btn.delete:hover {
+  background: #e04345;
+}
+
+.admin-btn.view {
+  background: #ff7a00;
+  color: #fff;
+}
+
+.admin-btn.view:hover {
+  background: #e96e00;
+}
+
+/* ===============================
+   BADGES (tipo de conta)
+================================ */
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge.individual {
+  background: #e6f4ff;
+  color: #096dd9;
+}
+
+.badge.ong {
+  background: #fff7e6;
+  color: #d48806;
+}
+
+.badge.admin {
+  background: #f0f0f0;
+  color: #444;
+}
+
+/* ===============================
+   ESTADOS VAZIOS
+================================ */
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+
+@media (max-width: 768px) {
+  .admin-title {
+    font-size: 1.5rem;
+  }
+
+  .admin-card span {
+    font-size: 1.6rem;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    font-size: 0.8rem;
+    padding: 0.7rem;
+  }
+}

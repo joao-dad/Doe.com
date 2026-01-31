@@ -1,35 +1,8 @@
-/*Menu Mobile */
-
-/*const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
-
-function $(id) {
-  return document.getElementById(id);
-}
-
-const menu = $('menu');
-if (menu) {
-  menu.style.display = 'none';
-}
-
-
- function $(id) {
-  return document.getElementById(id);
-}*/
-
-
 // =============================
-// AUTENTICAÇÃO (Signup + Login)
+// HELPERS
 // =============================
-
-// Helpers ---------------------
 function getUsers() {
-  const users = localStorage.getItem('users');
-  return users ? JSON.parse(users) : [];
+  return JSON.parse(localStorage.getItem('users')) || [];
 }
 
 function saveUsers(users) {
@@ -37,13 +10,40 @@ function saveUsers(users) {
 }
 
 function getLoggedUser() {
-  const user = localStorage.getItem('loggedUser');
-  return user ? JSON.parse(user) : null;
+  return JSON.parse(localStorage.getItem('loggedUser'));
 }
 
 function setLoggedUser(user) {
   localStorage.setItem('loggedUser', JSON.stringify(user));
 }
+
+// =============================
+// ADMIN FIXO
+// =============================
+const ADMIN_ACCOUNT = {
+  id: 'admin-1',
+  email: 'adm@gmail.com',
+  password: '123',
+  type: 'Admin',
+  name: 'Administrador'
+};
+
+function ensureAdminExists() {
+  const users = getUsers();
+
+  const adminExists = users.some(
+    u => u.email === ADMIN_ACCOUNT.email
+  );
+
+  if (!adminExists) {
+    users.push(ADMIN_ACCOUNT);
+    saveUsers(users);
+    console.log(' Admin criado automaticamente');
+  }
+}
+
+ensureAdminExists();
+
 
 // =============================
 // SIGNUP (Criar Conta)
@@ -159,7 +159,12 @@ if (loginForm) {
 
     const users = getUsers();
 
-    const user = users.find(u => u.email === email && u.password === password);
+    console.log('USERS:', users); // DEBUG
+    console.log('LOGIN:', email, password);
+
+    const user = users.find(
+      u => u.email === email && u.password === password
+    );
 
     if (!user) {
       alert('Email ou palavra-passe incorretos.');
@@ -168,9 +173,10 @@ if (loginForm) {
 
     setLoggedUser(user);
 
-    alert('Login efetuado com sucesso!');
-    window.location.href = 'home.html';
+    if (user.type === 'Admin') {
+      window.location.href = 'adm.html';
+    } else {
+      window.location.href = 'home.html';
+    }
   });
 }
-
-  

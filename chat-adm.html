@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style/main.css">
+    <link rel="stylesheet" href="./src/style/chat-adm.css">
+    <title>Mensagens</title>
+</head>
+<body>
+
+    <header class="header">
+      <div class="container nav">
+        <div class="logo"><a href="chat-adm.html"><img src="./src/img/doe1.png" alt="logo" /></a></div>
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="chat-adm.html">Início</a>
+
+          <a href="chat-adm.html" id="messagesMenuLink">Mensagens</a>
+
+          <!-- Logout -->
+          <button
+            id="logoutBtn"
+            class="btn btn-outline btn-small"
+            style="display: none"
+          >
+            Terminar sessão
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="messages-container">
+  <!-- LISTA DE CONVERSAS -->
+  <aside class="chat-list">
+    <h3>Conversas</h3>
+    <ul id="chatList"></ul>
+  </aside>
+
+  <!-- CHAT -->
+  <section class="chat-content">
+    <div class="chat-header">
+        <button id="backToChats" class="back-btn">←</button>
+
+      <h3 id="chatTitle">Selecione uma conversa</h3>
+      <p id="chatSubtitle"></p>
+    </div>
+
+    <div class="chat-messages" id="messagesContainer"></div>
+
+    <form id="messageForm" class="admin-chat-input" style="display:none;">
+      <input
+        type="text"
+        id="messageInput"
+        placeholder="Escreva uma mensagem..."
+        required
+      />
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+</main>
+
+<!-- Footer -->
+    <footer class="footer fade-in">
+      <div class="container footer-grid">
+        <div>
+          <h4>Doe.com</h4>
+          <p>
+            Conectando comunidades em Angola através de doações e partilhas.
+            Partilhe o que não usa, ajude quem precisa.
+          </p>
+        </div>
+
+        <div>
+          <h4>Links Rápidos</h4>
+          <p><a href="#">Políticas e privacidade</a></p>
+          <p><a href="#">Sobre Nós</a></p>
+          <p><a href="#">Centro de Ajuda</a></p>
+        </div>
+
+        <div>
+          <h4>Contacto</h4>
+          <p>📞 +244 xxx xxx xxx</p>
+          <p>✉ hello@doe.ao</p>
+          <p>📍 Luanda, Angola</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Kambia. Todos os direitos reservados.
+      </div>
+    </footer>
+
+<script src="./src/script/auth.js"></script>
+<script src="./src/script/script.js"></script>
+<script src="./src/script/chat-adm.js"></script>
+</body>
+</html>
