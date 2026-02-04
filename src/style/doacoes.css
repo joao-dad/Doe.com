@@ -1,15 +1,27 @@
 /* Página Fazer Doação */
 
 .donation-page {
+  display: grid;
+  gap: 3rem;
+  place-items: center;
   background: #ffffff;
 }
 
-.donation-grid {
+.container1{
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: flex-start;
-  
+  justify-content: center;
+
+}
+.section-header h2{
+  text-align: center;
+}
+.section-header p{
+  text-align: center;
+}
+.donation-grid {
+  width: 100%;
+  max-width: 600px;
 }
 
 .donation-card {
@@ -165,6 +177,59 @@ input:focus {
 
 
 /* =========================
+   Cards de Itens (padrão)
+   ========================= */
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* Card */
+.item-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagem */
+.item-image {
+  width: 100%;
+  height: 180px;              /* altura fixa */
+  overflow: hidden;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* corta sem distorcer */
+  display: block;
+}
+
+/* Conteúdo */
+.item-content {
+  padding: 1rem 1.2rem;
+  flex: 1;
+}
+
+.item-content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.item-category,
+.item-location {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 0.3rem;
+}
+
+
+/* =========================
    MODAL
 ========================= */
 
@@ -182,7 +247,7 @@ input:focus {
 /* Conteúdo do modal */
 .modal-content {
   background: #fff;
-  width: 100%;
+  width: 90%;
   max-width: 480px;
   border-radius: 12px;
   padding: 1.5rem;
@@ -204,17 +269,20 @@ input:focus {
 }
 
 /* Botão fechar */
-.modal-close {
+#closeModal {
   position: absolute;
   top: 14px;
   right: 16px;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   cursor: pointer;
-  color: #777;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
 }
 
-.modal-close:hover {
-  color: #000;
+#closeModal:hover {
+  color: #777;
 }
 
 /* Títulos e texto */
@@ -238,6 +306,10 @@ input:focus {
 /* Botão principal */
 .modal-content .btn {
   margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
 }
 
 

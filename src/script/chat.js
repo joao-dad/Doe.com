@@ -66,7 +66,7 @@ if (!isParticipant) {
 // =============================
 if (loggedUser.email === chat.ongEmail) {
   chatTitle.textContent = chat.userName;
-  chatSubtitle.textContent = 'Doação para pedido';
+  chatSubtitle.textContent = 'Quero ajudar';
 } else {
   chatTitle.textContent = chat.ongName;
   chatSubtitle.textContent = 'ONG';
@@ -92,9 +92,9 @@ function renderMessages() {
     );
 
     div.innerHTML = `
-      <small style="font-weight: 600;">${msg.sender}</small>
+      <small style="font-weight: 600; font-size: 11px">${msg.sender}</small>
       <p>${msg.text}</p>
-      <small style="opacity:0.5">${new Date(msg.date).toLocaleString()}</small>
+      <small style="opacity:0.5; font-size: 10px">${new Date(msg.date).toLocaleString()}</small>
     `;
 
 

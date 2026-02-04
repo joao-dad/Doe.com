@@ -129,11 +129,12 @@ function loadRequests() {
 
     card.innerHTML = `
       <img
-        src="${request.images?.[0] || 'assets/img/placeholder.jpg'}"
-        alt="${request.title}"
+        src="${request.images?.[0] || './src/img/doe1.png'}"
+        alt="${request.ongName}"
       />
 
       <div class="item-content">
+        <small>${request.ongName}</small>
         <h3>${request.title}</h3>
         <p class="item-category">${request.category}</p>
         <p class="item-location">${request.location}</p>
