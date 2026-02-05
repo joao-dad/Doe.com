@@ -123,17 +123,17 @@ section {
 }
 
 /* CTA */
-.cta {
+.parceria {
   background: var(--beige);
   text-align: center;
 }
 
-.cta p {
+.parceria p {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.cta-buttons {
+.pcr-buttons {
   margin-top: 2rem;
   display: flex;
   gap: 1rem;

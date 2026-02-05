@@ -3,6 +3,7 @@ const chats = JSON.parse(localStorage.getItem('chats')) || [];
 const chatListContainer = document.querySelector('.chat-list');
 const chatContent = document.querySelector('.chat-content');
 
+const deleteChatBtn = document.getElementById('deleteChatBtn');
 const chatList = document.getElementById('chatList');
 const messagesContainer = document.getElementById('messagesContainer');
 const chatTitle = document.getElementById('chatTitle');
@@ -23,7 +24,16 @@ function renderChatList() {
     return;
   }
 
-  chats.forEach(chat => {
+  const sortedChats = [...chats].sort((a, b) => {
+    const lastA =
+      a.messages[a.messages.length - 1]?.date || 0;
+    const lastB =
+      b.messages[b.messages.length - 1]?.date || 0;
+
+    return new Date(lastB) - new Date(lastA);
+  });
+
+  sortedChats.forEach(chat => {
     const li = document.createElement('li');
     li.className = 'chat-item';
 
@@ -53,13 +63,20 @@ function openChat(chatId) {
   activeChat = chats.find(c => c.id === chatId);
   if (!activeChat) return;
 
-  chatTitle.textContent = 'Conversa';
-  chatSubtitle.textContent =
-    `${activeChat.userEmail} ↔ ${activeChat.ongEmail}`;
+chatTitle.textContent = activeChat.userName || activeChat.userEmail;
+chatSubtitle.textContent = 'Parceiro';
+
 
   messageForm.style.display = 'flex';
+
+  // MOSTRAR botão apagar
+  if (deleteChatBtn) {
+    deleteChatBtn.style.display = 'inline-block';
+  }
+
   renderMessages();
 }
+
 
 /* ===============================
    RENDER MENSAGENS
@@ -109,6 +126,44 @@ messageForm.addEventListener('submit', e => {
 });
 
 renderChatList();
+
+/* ===============================
+   APAGAR CONVERSA (ADMIN)
+================================ */
+if (deleteChatBtn) {
+  deleteChatBtn.addEventListener('click', () => {
+    if (!activeChat) return;
+
+    const confirmDelete = confirm(
+      'Tem a certeza que deseja eliminar esta conversa inteira?'
+    );
+
+    if (!confirmDelete) return;
+
+    const updatedChats = chats.filter(
+      chat => chat.id !== activeChat.id
+    );
+
+    localStorage.setItem(
+      'chats',
+      JSON.stringify(updatedChats)
+    );
+
+    // limpar UI
+    activeChat = null;
+    messagesContainer.innerHTML = '';
+    chatTitle.textContent = 'Selecione uma conversa';
+    chatSubtitle.textContent = '';
+    messageForm.style.display = 'none';
+    deleteChatBtn.style.display = 'none';
+
+    // atualizar lista
+    chats.length = 0;
+    updatedChats.forEach(c => chats.push(c));
+    renderChatList();
+  });
+}
+
 
 
 //botão voltar

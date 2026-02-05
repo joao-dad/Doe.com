@@ -1,6 +1,26 @@
-// =============================
 // CHAT - CONVERSA
-// =============================
+function getChatDisplayName(chat, loggedUser) {
+  // CHAT COM ADMIN
+  if (chat.type === 'admin') {
+    if (loggedUser.type === 'Admin') {
+      return chat.userName || chat.userEmail;
+    }
+    return chat.adminName || 'Administrador';
+  }
+
+  // CHAT NORMAL (ONG ↔ USER)
+  if (loggedUser.email === chat.ongEmail) {
+    return chat.userName || chat.userEmail;
+  }
+
+  return chat.ongName || chat.ongEmail || 'ONG';
+}
+
+
+
+
+/*** */
+
 
 const loggedUser = getLoggedUser();
 const params = new URLSearchParams(window.location.search);
@@ -62,15 +82,27 @@ if (!isParticipant) {
 }
 
 // =============================
-// TÍTULO DO CHAT
+// TÍTULO DO CHAT 
 // =============================
-if (loggedUser.email === chat.ongEmail) {
-  chatTitle.textContent = chat.userName;
-  chatSubtitle.textContent = 'Quero ajudar';
+
+if (chat.type === 'ADMIN') {
+  // Chat com administrador
+  chatTitle.textContent = 'Admin';
+  chatSubtitle.textContent = 'Parcerias';
 } else {
-  chatTitle.textContent = chat.ongName;
-  chatSubtitle.textContent = 'ONG';
+  // Chat normal ONG ↔ utilizador
+  const otherEmail =
+    loggedUser.email === chat.userEmail
+      ? chat.ongEmail
+      : chat.userEmail;
+
+  chatTitle.textContent = otherEmail;
+  chatSubtitle.textContent =
+    loggedUser.email === chat.ongEmail
+      ? 'Pedido de ajuda'
+      : 'ONG';
 }
+
 
 // =============================
 // RENDER MENSAGENS
@@ -83,6 +115,7 @@ function renderMessages() {
       '<p class="empty-chat">Nenhuma mensagem ainda.</p>';
     return;
   }
+  
 
   chat.messages.forEach(msg => {
     const div = document.createElement('div');

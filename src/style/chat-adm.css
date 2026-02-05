@@ -104,6 +104,22 @@
   }
 }
 
+/*botão apagar conversa*/
+.delete-chat-btn {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.delete-chat-btn:hover {
+  background: #b91c1c;
+}
+
+
 
 /* ============================
    RESPONSIVO – MOBILE

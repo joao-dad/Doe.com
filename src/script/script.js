@@ -60,7 +60,58 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMessagesMenu(user);
 });
 
-// contador mensagens
+
+//Botão parceria
+const partnerBtn = document.getElementById('partnerBtn');
+
+if (partnerBtn) {
+  partnerBtn.addEventListener('click', () => {
+    const user = getLoggedUser();
+
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    startAdminChat(user);
+  });
+}
+//abrir chat-adm
+function startAdminChat(user) {
+  let chats = JSON.parse(localStorage.getItem('chats')) || [];
+
+  let chat = chats.find(
+    c =>
+      c.type === 'ADMIN' &&
+      c.userEmail === user.email
+  );
+
+  if (!chat) {
+    chat = {
+      id: Date.now().toString(),
+      type: 'ADMIN',
+      userEmail: user.email,
+      userName: user.name || user.organizationName,
+      adminEmail: 'adm@gmail.com',
+      messages: [
+        {
+          sender: user.email,
+          text: 'Olá! \nTenho interesse em tornar-me parceiro da Kambia e gostaria de saber como posso colaborar.\n\nFico disponível para mais informações.',
+          date: new Date().toISOString(),
+          readBy: []
+        }
+      ]
+    };
+
+    chats.push(chat);
+    localStorage.setItem('chats', JSON.stringify(chats));
+  }
+
+  window.location.href = `chat.html?chatId=${chat.id}`;
+}
+
+
+// CONTADOR DE MENSAGENS
 function updateMessagesMenu(user) {
   const link = $('messagesMenuLink');
   if (!link) return;
