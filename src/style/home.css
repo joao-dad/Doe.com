@@ -9,7 +9,8 @@
 .hero {
   position: relative;
   min-height: 85vh;
-  background-image: url('https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&w=1600&q=80');
+ /* background-image: url('https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&w=1600&q=80');*/
+  background-image: url('../img/pexels02.jpg');
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -22,7 +23,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(31, 166, 74, 0.88);
+  background: rgba(31, 166, 74, 0.671);
 }
 
 .hero-content {
@@ -71,7 +72,7 @@ section {
   color: var(--text-light);
 }
 
-/* How it works */
+/* Como funciona */
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -103,7 +104,7 @@ section {
 .step-icon.orange { background: var(--orange); }
 .step-icon.blue { background: var(--blue); }
 
-/* Impact */
+/* Impacto */
 .impact {
   background: var(--green);
   color: #ffffff;
@@ -122,15 +123,39 @@ section {
   display: block;
 }
 
-/* CTA */
+/* Parceria */
 .parceria {
-  background: var(--beige);
+  width: 100%;
+  height: auto;
+  min-height: 125vh;
+}
+
+.container-P{
+  width: 90%;
+  display: flex;
+  margin: 10px  100px auto;
+  gap: 50px;
+}
+
+.desc-P{
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.parcs h3{
   text-align: center;
+  font-size: 16px;
+  margin: 20px;
+  color: #333;
 }
 
 .parceria p {
   max-width: 600px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .pcr-buttons {
@@ -140,6 +165,47 @@ section {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.foto-moti{
+  width: 50%;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.foto-moti img{
+  width: 90%;
+  height: 100%;
+
+}
+
+.parc-grid{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px 60px;
+  align-items: center;
+}
+
+.parc-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parc-item img{
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+
+.parc-item img:hover{
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
 
 /* Fade-in ao carregar */
 .fade-in {
@@ -200,6 +266,13 @@ input:focus {
 
 
 /* Responsivo */
+@media (max-width: 992px) {
+  .parc-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
@@ -208,5 +281,29 @@ input:focus {
   section {
     padding: 3.5rem 0;
   }
+
+  .parc-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .foto-moti{
+    display: none;
+  }
+
+  .desc-P{
+    width: 100%;
+  }
+
+  .container-P{
+    margin: auto;
+  }
+
+  .parcs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
 }
+
 
