@@ -43,7 +43,7 @@
 
 .hero p {
   margin-bottom: 2.2rem;
-  font-size: 1.05rem;
+  font-size: 1.07rem;
 }
 
 .hero-buttons {
@@ -127,7 +127,7 @@ section {
 .parceria {
   width: 100%;
   height: auto;
-  min-height: 125vh;
+  min-height: 90vh;
 }
 
 .container-P{
@@ -173,9 +173,16 @@ section {
 }
 
 .foto-moti img{
-  width: 90%;
+  width: 400px;
   height: 100%;
+  margin-left: 100px;
+  border-radius: 5px 40px ;
+  transition: 0.3s ease;
+}
 
+.foto-moti img:hover{
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
 
 .parc-grid{
@@ -287,8 +294,16 @@ input:focus {
   }
 
   .foto-moti{
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .foto-moti img{
+    margin-left: 0;
+    width: 450px;
+    height: 450px;
+  }
+  
 
   .desc-P{
     width: 100%;
@@ -296,6 +311,7 @@ input:focus {
 
   .container-P{
     margin: auto;
+    flex-direction: column;
   }
 
   .parcs{
