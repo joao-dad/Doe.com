@@ -1,4 +1,11 @@
-/* AUTH PAGES (LOGIN & SIGNUP)*/
+/* (LOGIN & SIGNUP)*/
+
+
+
+body{
+  background-color: white;
+}
+
 
 .auth {
   min-height: 100vh;

@@ -1,3 +1,18 @@
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+main{
+  flex: 1;
+}
+
 /* Página Fazer Doação */
 
 .donation-page {
@@ -190,7 +205,6 @@ input:focus {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
 }
-
 /* Card */
 .item-card {
   background: #ffffff;
@@ -326,13 +340,8 @@ input:focus {
 }
 
 /* Responsivo */
-@media (max-width: 700px) {
-  .profile-header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .profile-avatar {
-    margin-bottom: 1rem;
+@media (max-width: 768px) {
+  .container1{
+    width: 90%;
   }
 }

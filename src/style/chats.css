@@ -1,3 +1,25 @@
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+main{
+  flex: 1;
+}
+
+.container1{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .chats-page {
   padding: 16px;
   min-height: calc(100vh - 120px); /* header + footer */
@@ -86,4 +108,10 @@
   padding: 4px 8px;
   border-radius: 12px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 768px){
+  .chats-list{
+    width: 90%;
+  }
 }
